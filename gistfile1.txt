@@ -32,7 +32,7 @@ closest_color = color_name
 
 return closest_color
 
-#The colos you have chosen. You need to take the RGB values of the chosen color, decide on a name #and put it in this format: 'Name': RGB(Value1, Value2, Value3),
+#The colors you have chosen. You need to take the RGB values of the chosen color, decide on a name #and put it in this format: 'Name': RGB(Value1, Value2, Value3),
 #If you can't do it, ask ChatGPT or comment on this post.
 
 target_colors = {
