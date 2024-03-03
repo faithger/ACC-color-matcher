@@ -1,60 +1,34 @@
 import sys
 
 class RGB:
-
-def __init__(self, r, g, b):
-
-self.r = r
-
-self.g = g
-
-self.b = b
+    def __init__(self, r, g, b):
+        self.r = r
+        self.g = g
+        self.b = b
 
 def rgb_distance(color1, color2):
-
-return sum((c1 - c2) ** 2 for c1, c2 in zip([color1.r, color1.g, color1.b], [color2.r, color2.g, color2.b]))
+    return sum((c1 - c2) ** 2 for c1, c2 in zip([color1.r, color1.g, color1.b], [color2.r, color2.g, color2.b]))
 
 def find_closest_color(target_color, color_list):
+    closest_color = None
+    min_distance = sys.maxsize
 
-closest_color = None
+    for color_name, color_rgb in color_list.items():
+        distance = rgb_distance(target_color, color_rgb)
+        if distance < min_distance:
+            min_distance = distance
+            closest_color = color_name
 
-min_distance = sys.maxsize
+    return closest_color
 
-for color_name, color_rgb in color_list.items():
-
-distance = rgb_distance(target_color, color_rgb)
-
-if distance < min_distance:
-
-min_distance = distance
-
-closest_color = color_name
-
-return closest_color
-
-#The colos you have chosen. You need to take the RGB values of the chosen color, decide on a name #and put it in this format: 'Name': RGB(Value1, Value2, Value3),
+#The color you have chosen. You need to take the RGB values of the chosen color, decide on a name #and put it in this format: 'Name': RGB(Value1, Value2, Value3),
 #If you can't do it, ask ChatGPT or comment on this post.
-
 target_colors = {
-
-'Golden Yellow': RGB(255, 215, 0),
-
-'Royal Blue': RGB(65, 105, 225),
-
-'Radiant White': RGB(255, 255, 255),
-
-'Mustard': RGB(255, 173, 1),
-
-'Sapphire Blue': RGB(0, 56, 168),
-
-'Chrome Yellow': RGB(255, 205, 0),
-
+    '1': RGB(210, 52, 235),
 }
 
 # ACC Color list
-
 reference_colors = {
-
 'Color 1': RGB(3, 2, 2),
 
 'Color 2': RGB(39, 49, 54),
@@ -836,13 +810,9 @@ reference_colors = {
 'Color 531': RGB(255, 100, 26),
 
 'Color 532': RGB(169, 185, 197)
-
 }
 
 # Find the closest matching color for each target color
-
 for color_name, color_rgb in target_colors.items():
-
-closest_match = find_closest_color(color_rgb, reference_colors)
-
-print(f"{color_name}: Closest Match - {closest_match}")
+    closest_match = find_closest_color(color_rgb, reference_colors)
+    print(f"{color_name}: Closest Match - {closest_match}")
